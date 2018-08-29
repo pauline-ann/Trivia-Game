@@ -1,0 +1,31 @@
+.container {
+    width: 600px;
+    padding: 20px;
+    margin-top: 6%;
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border-radius: 110px;
+}
+header {
+    text-align: center;
+    font-family: 'Elsie', cursive;
+}
+h1 {
+    font-size: 2.5em;
+}
+button {
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+}
+section {
+    text-align: center;
+}
+body {
+    background-size: cover;
+
+}
+#sponge {
+    width: 500px;
+    height: auto;
+}
