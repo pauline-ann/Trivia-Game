@@ -23,9 +23,11 @@ section {
 }
 body {
     background-size: cover;
-
 }
 #sponge {
     width: 500px;
     height: auto;
+}
+legend {
+    text-align: left;
 }
