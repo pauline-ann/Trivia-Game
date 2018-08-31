@@ -1,4 +1,4 @@
-///Global variables ///
+///Global Variables ///
 
 var time = 100;
 var correct = 0;
@@ -55,10 +55,13 @@ function listQuestions() {
 
 function calculateResults() {
     for (i = 0; i < questionList.length; i++) {
-        
+
         var questionObj = questionList[i];
 
         var userAnswer = $("#question_" + i + " input[name=character]:checked").val();
+        console.log(userAnswer);
+        userAnswers.push(userAnswer);
+        console.log(userAnswers);
 
         if (userAnswer === questionObj.answer) {
             correct++
@@ -67,10 +70,6 @@ function calculateResults() {
         } else {
             incorrect++;
         }
-
-        console.log(userAnswer);
-        userAnswers.push(userAnswer);
-        console.log(userAnswers);
     }
     showResults();
 }
@@ -79,24 +78,25 @@ function showResults() {
     stopTimer();
     $("#questions").empty();
     $("#submit").hide();
-    $("#results").show();
 
-    // append variables to results div
+    $("#results").append("Correct answers: " + correct + "<br>");
+    $("#results").append("Incorrect answers: " + incorrect + "<br>");
+    $("#results").append("Unanswered: " + unanswered + "<br>");
 
     $("#playagain").show();
     $("#playagain").on("click", restart);
 }
 
 function restart() {
-    $("#questions").empty();
     time = 100;
     correct = 0;
     incorrect = 0;
     unanswered = 0;
+    $("#questions").empty();
+    $("#results").empty();
     $("#playagain").hide();
-    $("#results").hide();
     startTimer();
-    startQuiz();
+    listQuestions();
 }
 
 /// Timer Functions ///
