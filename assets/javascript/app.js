@@ -13,7 +13,7 @@ var questionList = [
     { question: "Do you smell it? That smell. A kind of smelly smell. The smelly smell that smells... smelly.", options: ["Spongebob", "Mr. Krabs", "Plankton", "Sandy"], answer: "Mr. Krabs" },
     { question: "This is a load of barnacles.", options: ["Plankton", "Dave", "Squidward", "Sandy"], answer: "Dave" },
     { question: "Once there was an ugly barnacle. He was so ugly that everyone died. The end!", options: ["Squidward", "Plankton", "Mr. Krabs", "Patrick"], answer: "Patrick" },
-    { question: "Sandy, you may not have noticed, but I is 100% mam-male.", options: ["Spongebob", "Patrick", "Sandy", "Mr. Krabs"], answer: "Spongebob" },
+    { question: "Sandy, you may not have noticed, but I is 100% mam-male.", options: ["Spongebob", "Patrick", "Squidward", "Mr. Krabs"], answer: "Spongebob" },
     { question: "Ravioli, ravioli, give me the formuoli.", options: ["Mr. Krabs", "Plankton", "Larry", "Spongebob"], answer: "Plankton" },
     { question: "FUTURE!!!!!", options: ["Spongebob", "Sandy", "Squidward", "Patrick"], answer: "Squidward" },
     { question: "Is mayonnaise an instrument?", options: ["Spongebob", "Larry", "Sandy", "Patrick"], answer: "Patrick" },
