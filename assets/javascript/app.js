@@ -1,9 +1,6 @@
-///Global Variables ///
+/// Global Variables ///
 
 var time = 100;
-var correct = 0;
-var incorrect = 0;
-var unanswered = 0;
 var interval;
 var isRunning = false;
 var questionList = [
@@ -26,7 +23,7 @@ var correctAnswer = ["Spongebob", "Squidward", "Patrick", "Mr. Krabs", "Dave", "
 window.onload = function () {
     $("#playagain").hide();
     $("#submit").hide();
-    $("#start").on("click", listQuestions);
+    $("#start").off().on("click", listQuestions);
 }
 
 function listQuestions() {
@@ -50,38 +47,42 @@ function listQuestions() {
         }
     }
     $("#submit").show();
-    $("#submit").on("click", calculateResults);
+    $("#submit").off().on("click", calculateResults);
 }
 
 function calculateResults() {
-    for (i = 0; i < questionList.length; i++) {
+    
+    let results = {
+        correct: 0,
+        incorrect: 0,
+        unanswered: 0
+    }
 
-        var questionObj = questionList[i];
+    questionList.forEach((questionObj, index) => {
 
-        var userAnswer = $("#question_" + i + " input[name=character]:checked").val();
-        console.log(userAnswer);
+        var userAnswer = $("#question_" + index + " input[name=character]:checked").val();
         userAnswers.push(userAnswer);
-        console.log(userAnswers);
 
         if (userAnswer === questionObj.answer) {
-            correct++
+            results.correct++
         } else if (typeof (userAnswer) === "undefined") {
-            unanswered++;
+            results.unanswered++;
         } else {
-            incorrect++;
+            results.incorrect++;
         }
-    }
-    showResults();
+    });
+    showResults(results);
 }
 
-function showResults() {
+function showResults(results) {
+
+    const { correct, incorrect, unanswered } = results;
+
     stopTimer();
     $("#questions").empty();
     $("#submit").hide();
 
-    $("#results").append("Correct answers: " + correct + "<br>");
-    $("#results").append("Incorrect answers: " + incorrect + "<br>");
-    $("#results").append("Unanswered: " + unanswered + "<br>");
+    $("#results").html("Correct answers: " + correct + "<br> Incorrect answers: " + incorrect + "<br> Unanswered: " + unanswered + "<br>");
 
     $("#playagain").show();
     $("#playagain").on("click", restart);
@@ -89,9 +90,6 @@ function showResults() {
 
 function restart() {
     time = 100;
-    correct = 0;
-    incorrect = 0;
-    unanswered = 0;
     $("#questions").empty();
     $("#results").empty();
     $("#playagain").hide();
@@ -108,6 +106,7 @@ function startTimer() {
         isRunning = true;
     }
 }
+
 function decrement() {
     time--;
     $("#timer").html('Time left: ' + time + 's');
@@ -117,6 +116,7 @@ function decrement() {
         showResults();
     }
 }
+
 function stopTimer() {
     $("#timer").hide();
     isRunning = false;
